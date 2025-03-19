@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jud - Creative Professional</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --accent-color: #e8f5e9;
+            --text-color: #2c3e50;
+            --bg-color: #ffffff;
+            --gray-bg: #f9fafb;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(46, 204, 113, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            padding-right: 2rem;
+        }
+
+        .hero-image {
+            text-align: right;
+        }
+
+        .profile-img {
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(46, 204, 113, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) rotate(360deg);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(46, 204, 113, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .portfolio-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: var(--gray-bg);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-text {
+                padding-right: 0;
+            }
+
+            .hero-image {
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 300px;
+                height: 400px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Services Section Styles */
+        .services {
+            padding: 8rem 0;
+            background: var(--gray-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(46, 204, 113, 0.2);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            margin: 0.8rem 0;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Blog Section Styles */
+        .blog {
+            padding: 8rem 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(46, 204, 113, 0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: var(--text-color);
+        }
+
+        .blog-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+
+        .read-more i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Update Responsive Design */
+        @media (max-width: 768px) {
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">JUD</a>
+                <div class="nav-links">
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#services">Services</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Creative Mind,<br>Innovative Solutions</h1>
+                <p>Digital Artist & Creative Director specializing in brand storytelling and immersive experiences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
+                    <a href="#" class="social-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" target="_blank" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" class="social-link" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Jud" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Digital Art">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Digital Art Collection</h3>
+                    <p class="portfolio-description">A series of digital artworks exploring the intersection of nature and technology.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Digital Art</span>
+                        <span class="tag">NFT</span>
+                        <span class="tag">Creative</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1618556450991-2f1af64e8191?auto=format&fit=crop&q=80" alt="Brand Design">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Brand Identity</h3>
+                    <p class="portfolio-description">Complete brand identity design for an innovative tech startup.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Branding</span>
+                        <span class="tag">Identity</span>
+                        <span class="tag">Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1618556450994-a6a5baa5b6b7?auto=format&fit=crop&q=80" alt="Art Installation">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Interactive Installation</h3>
+                    <p class="portfolio-description">An immersive art installation combining digital media and physical space.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Installation</span>
+                        <span class="tag">Interactive</span>
+                        <span class="tag">Art</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Digital Art</h3>
+                <p>Creating unique digital artworks and illustrations that capture imagination and emotion.</p>
+                <ul class="service-features">
+                    <li>Custom Illustrations</li>
+                    <li>Digital Paintings</li>
+                    <li>Character Design</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Creative Direction</h3>
+                <p>Guiding projects from concept to completion with a focus on innovative storytelling.</p>
+                <ul class="service-features">
+                    <li>Brand Strategy</li>
+                    <li>Art Direction</li>
+                    <li>Visual Storytelling</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-camera"></i>
+                <h3>Digital Content</h3>
+                <p>Producing engaging digital content that resonates with your target audience.</p>
+                <ul class="service-features">
+                    <li>Social Media Content</li>
+                    <li>Digital Marketing</li>
+                    <li>Content Strategy</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" id="blog">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80" alt="Creative Process">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Oct 15, 2023</span>
+                    <h3>The Creative Process Behind Digital Art</h3>
+                    <p>Exploring the journey from concept to final artwork in the digital age.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Design Trends">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Oct 10, 2023</span>
+                    <h3>Emerging Design Trends in 2023</h3>
+                    <p>A deep dive into the latest trends shaping the creative industry.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&q=80" alt="Creative Tools">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Oct 5, 2023</span>
+                    <h3>Essential Tools for Digital Artists</h3>
+                    <p>A curated list of must-have tools for modern creative professionals.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Let's Create Together</h2>
+            <p>Have a project in mind? Let's bring your vision to life.</p>
+            <a href="mailto:hello@jud.com" class="button">Start a Project</a>
+        </div>
+    </section>
+
+ 
+</body>
+</html> 
