@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayat - Creative Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8b5cf6;
+            --secondary-color: #7c3aed;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .header-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-social a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+        }
+
+        .header-social a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 1rem 4rem;
+            text-align: center;
+            background: var(--light-gray);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #4b5563;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hero-social a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            padding: 0.8rem;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-social a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .work-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .work-card:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .work-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background: var(--light-gray);
+        }
+
+        .contact p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .contact-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--white);
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .header-social {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Hayat</a>
+                <nav class="nav-menu">
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80" alt="Hayat" class="profile-img">
+            <h1>Welcome, I'm Hayat</h1>
+            <p>Creative designer and digital artist crafting beautiful visual experiences</p>
+            <div class="hero-social">
+                <a href="https://t.me/hayat" target="_blank" rel="noopener" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://instagram.com/hayat" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/hayat" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm a passionate creative professional with a love for design and visual storytelling. Through my work, I aim to create meaningful and beautiful experiences that leave a lasting impression.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="work">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Design Project">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Digital Art Collection</h3>
+                        <p>A series of digital illustrations exploring nature and harmony.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?auto=format&fit=crop&q=80" alt="Art Project">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Brand Identity</h3>
+                        <p>Creating visual identities for modern businesses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Interested in collaborating or just want to say hello?</p>
+            <a href="mailto:hello@hayat.com" class="contact-button">Send a Message</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hayat. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
